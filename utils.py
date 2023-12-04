@@ -22,7 +22,7 @@ def get_query(k):
 
 def get_query_d(k,e):
 
-    q = f'''SELECT exp_condition , mapped_phosphosite FROM phospodb_nisar_differential_data WHERE (mapped_genesymbol ='{k}') AND (expression='{e}') '''
+    q = f'''SELECT exp_condition , mapped_phosphosite, expression FROM PAK1_diff_NEW WHERE mapped_genesymbol ='{k}'  '''
 
     return q
 

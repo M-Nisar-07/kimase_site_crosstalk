@@ -8,12 +8,6 @@ from itertools import chain
 from utils import get_combinations
 
 
-def remove_dup(list_of_dicts):
-    unique_entries = {tuple(sorted(d.items())) for d in list_of_dicts}
-    unique_dicts = [dict(entry) for entry in unique_entries]
-
-    return unique_dicts
-
 def get_n00(s1,s2,t):
     s1 = {i.split('--&&--')[0] for i in s1}
     s2 = {i.split('--&&--')[0] for i in s2}

@@ -22,7 +22,7 @@ def get_query(k):
 
 def get_query_d(k,e):
 
-    q = f'''SELECT exp_condition , mapped_phosphosite, expression FROM PAK1_diff_NEW WHERE mapped_genesymbol ='{k}'  '''
+    q = f'''SELECT exp_condition , mapped_phosphosite, expression FROM phospodb_nisar_differential_data WHERE mapped_genesymbol ='{k}'  '''
 
     return q
 
@@ -97,7 +97,6 @@ def get_n(s1,s2,df, total):
 def generate_matrix(df, CUT_OFF):
     
     total_ex = df["exp_condition"].unique().tolist() 
-    print(len(total_ex))
     df = df.groupby('mapped_phosphosite').agg(pd.Series.tolist).reset_index()
 
     df['count'] = df["exp_condition"].apply(lambda x:len(x))

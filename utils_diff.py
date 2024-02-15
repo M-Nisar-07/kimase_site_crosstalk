@@ -85,10 +85,9 @@ def generate_matrix_dif(df, CUT_OFF):
 
     df_comb = get_combinations(all_sites)
 
-    result = df_comb.apply(lambda x:get_n(x['site1'],x['site2'], df , new_total_ex), axis = 1)
 
- 
-    df_comb[['n_00','n_uddu_nd','n_uddu','n_uudd','p-Value']] = pd.DataFrame(result.tolist())
+    df_comb[['n_00','n_uddu_nd','n_uddu','n_uudd','p-Value']] = df_comb.apply(lambda x:get_n(x['site1'],x['site2'],
+                                                                                                          df , new_total_ex),  axis = 1, result_type='expand')
 
     df_comb.drop_duplicates(inplace=True)
 

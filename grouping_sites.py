@@ -15,6 +15,3 @@ for i in range(len(df)):
 
 result_df = pd.DataFrame(pairs_list, columns=['site', 'site_pair'])
 
-print(result_df)
-result_df.to_excel("site_grouping.xlsx")
-

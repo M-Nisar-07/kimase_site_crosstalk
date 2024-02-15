@@ -111,9 +111,13 @@ def generate_matrix(df, CUT_OFF):
 
     df_comb = get_combinations(all_sites)
     
-    result = df_comb.apply(lambda x:get_n(x['site1'],x['site2'], df , total_ex), axis = 1)
 
-    df_comb[['n_00','n_01','n_10','n_11','p-Value']] = pd.DataFrame(result.tolist())
+    df_comb[['n_00','n_01','n_10','n_11','p-Value']] = df_comb.apply(lambda x:get_n(x['site1'],x['site2'],
+                                                                                                          df , total_ex),  axis = 1, result_type='expand')
+
+    # result = df_comb.apply(lambda x:get_n(x['site1'],x['site2'], df , total_ex), axis = 1)
+
+    # df_comb[['n_00','n_01','n_10','n_11','p-Value']] = pd.DataFrame(result.tolist())
 
     df_comb.drop_duplicates(inplace=True)
     df_comb.sort_values(by=['p-Value'], inplace=True)
